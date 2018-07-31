@@ -1,0 +1,95 @@
+install.packages("dplyr")
+library(dplyr)
+ir<-iris
+str(iris)
+plot(x=ir$Petal.Width,y=ir$Petal.Length)
+petalwidth <- c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1)
+petallength <- c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5)
+plot(petallength, petalwidth)
+plot(petallength, petalwidth, pch = 16, cex = 1.3, col = "blue", main = "PETAL_LENGTH PLOTTED AGAINST PETAL_WIDTH", xlab = "petallength (cm)", ylab = "petalwidth (mm)")
+lm(petalwidth ~ petallength)
+abline(-0.3324, 0.3810)petallength
+abline(lm(petalwidth ~ p))
+summary(ir$Petal.Length,ir$Petal.Width)
+
+
+#to give title and axis names
+ 
+plot(x=ir$Petal.Width,y=ir$Petal.Length,
+main=c("petal width vs petal length"),
+xlab=c("petal width"),ylab=c("petal length"))
+
+plot(x=ir$Sepal.Width,y=ir$Sepal.Length,
+main=c("sepal width vs sepal length"),
+xlab=c("sepal width"),ylab=c("sepal length"))
+
+#to give colour and shape
+
+plot(x=ir$Sepal.Width,y=ir$Sepal.Length,
+main=c("sepal width vs sepal length"),
+xlab=c("sepal width"),ylab=c("sepal length"),
+col="green",pch=2)
+
+#to increase the line width
+
+plot(x=ir$Sepal.Width,y=ir$Sepal.Length,
+main=c("sepal width vs sepal length"),
+xlab=c("sepal width"),ylab=c("sepal length"),
+col="green",pch=2,lwd=3)
+
+#to differentiate between diff species
+
+plot(x=ir$Petal.Width,y=ir$Petal.Length,
+main=c("petal width v/s petal length"),
+xlab=c("petal width"),ylab=c("petal length"),
+col=ir$Species,pch=as.numeric(ir$Species),
+lwd=3)
+#CONCLUSION: AS PETAL WIDTH INCREASES -> PETAL LENGTH ALSO INCREASES
+
+#to differentiate between diff species
+
+plot(x=ir$Sepal.Width,y=ir$Sepal.Length,
+main=c("Sepal width v/s sepal length"),
+xlab=c("Sepal width"),ylab=c("Sepal length"),
+col=ir$Species,lwd=2)
+
+#CONCLUSION: we observe a scattered plot
+#hence a null hypothesis can be performed
+#i.e. we assume that the changes are due to random chance
+#to contradict this,an alternate hypothesis has to be performed
+
+
+#to increase the size of data points
+
+plot(x=ir$Petal.Width,y=ir$Petal.Length,
+main=c("petal width v/s petal length"),
+xlab=c("petal width"),ylab=c("petal length"),lwd=5,pch=5,
+col=ir$Species)
+cex=as.numeric(ir$species)
+
+#to obtain box plot
+
+boxplot(ir$Petal.Length)
+boxplot(ir$Petal.Length,
+main=c("dist for petal length"),col="yellow")
+summary(ir$Petal.Length)
+
+#(summary gives mean n median 
+#from which skewness can be identified)
+
+
+#to obtain a histogram
+
+hist(ir$Sepal.Width,col="orange",labels=TRUE)
+hist(ir$Sepal.Width,col="orange",freq=FALSE)
+hist(ir$Sepal.Width,col="orange",labels=TRUE,
+freq=FALSE)
+lines(density(ir$Sepal.Width))
+
+
+#adding multiple plots
+par(mfrow=c(1,2))
+plot(x=ir$Species,y=ir$Sepal.Width,xlab="species",
+main="sepal length across species",col="green")
+hist(ir$Sepal.Width,col="orange",labels=TRUE)
+dev.off() #returns to default status
